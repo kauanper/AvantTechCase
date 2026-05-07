@@ -5,6 +5,7 @@ import com.avant.AvantTechCase.User.DTOs.UserResponseDTO;
 import com.avant.AvantTechCase.User.UserEntity;
 import com.avant.AvantTechCase.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,13 +16,14 @@ public class CreateUserUseCase {
 
     public UserResponseDTO execute(UserRegisterDTO data) {
         if(userRepository.findByLogin(data.login()) != null) {
-            //login já existe
             return null;
         }
+        String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
+
         UserEntity user = new UserEntity();
         user.setName(data.name());
         user.setLogin(data.login());
-        user.setPassword(data.password());
+        user.setPassword(encryptedPassword);
 
         userRepository.save(user);
 
@@ -29,7 +31,7 @@ public class CreateUserUseCase {
                 user.getId(),
                 user.getName(),
                 user.getLogin(),
-                user.getPassword()
+                data.password()
         );
     }
 }
