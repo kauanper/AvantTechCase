@@ -1,6 +1,5 @@
 package com.avant.AvantTechCase.User;
 
-import com.avant.AvantTechCase.Auth.Roles;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -21,7 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of ="id")
-public class User implements UserDetails {
+public class UserEntity implements UserDetails {
 
     @Id
     private Long id;
