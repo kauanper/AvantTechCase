@@ -2,10 +2,7 @@ package com.avant.AvantTechCase.modules.List;
 
 import com.avant.AvantTechCase.modules.List.DTOs.ListRequestDTO;
 import com.avant.AvantTechCase.modules.List.DTOs.ListResponseDTO;
-import com.avant.AvantTechCase.modules.List.Services.CreateListUseCase;
-import com.avant.AvantTechCase.modules.List.Services.DeleteByIdUseCase;
-import com.avant.AvantTechCase.modules.List.Services.FindByIdUseCase;
-import com.avant.AvantTechCase.modules.List.Services.UpdateByIdUseCase;
+import com.avant.AvantTechCase.modules.List.Services.*;
 import com.avant.AvantTechCase.modules.User.UserEntity;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +31,9 @@ public class ListController {
     @Autowired
     UpdateByIdUseCase updateByIdUseCase;
 
+    @Autowired
+    ListAllByUserUseCase listAllByUserUseCase;
+
     @PostMapping
     public ResponseEntity<?> createNews(@RequestBody @Valid ListRequestDTO dto) {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext()
@@ -44,14 +44,14 @@ public class ListController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
     }
-/*
+
     @GetMapping
     public ResponseEntity<List<ListResponseDTO>> listAll() {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //var lists = findByIdUseCase.execute(user.getId());
+        var lists = listAllByUserUseCase.execute(user.getId());
         return ResponseEntity.ok(lists);
     }
-*/
+
     @GetMapping("/{id}")
     public ResponseEntity<ListResponseDTO> getById(
             @PathVariable Long id,
