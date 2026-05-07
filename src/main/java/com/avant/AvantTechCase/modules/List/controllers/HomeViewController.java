@@ -1,10 +1,7 @@
-package com.avant.AvantTechCase.modules.List;
+package com.avant.AvantTechCase.modules.List.controllers;
 
 import com.avant.AvantTechCase.modules.List.DTOs.ListRequestDTO;
-import com.avant.AvantTechCase.modules.List.Services.CreateListUseCase;
-import com.avant.AvantTechCase.modules.List.Services.FindByIdUseCase;
-import com.avant.AvantTechCase.modules.List.Services.ListAllByUserUseCase;
-import com.avant.AvantTechCase.modules.List.Services.UpdateByIdUseCase;
+import com.avant.AvantTechCase.modules.List.Services.*;
 import com.avant.AvantTechCase.modules.Task.DTOs.TaskRequestDTO;
 import com.avant.AvantTechCase.modules.Task.Services.CreateTaskUseCase;
 import com.avant.AvantTechCase.modules.Task.Services.ListAllTasksByUserUseCase;
@@ -25,6 +22,7 @@ public class HomeViewController {
     @Autowired private UpdateByIdUseCase updateListByIdUseCase;
     @Autowired private ListAllTasksByUserUseCase listAllTasksByUserUseCase;
     @Autowired private CreateTaskUseCase createTaskUseCase;
+    @Autowired private DeleteByIdUseCase deleteListByIdUseCase;
 
     @GetMapping("/home")
     public String home(Model model) {
@@ -69,6 +67,13 @@ public class HomeViewController {
         UserEntity user = getAuthenticatedUser();
         createTaskUseCase.execute(dto, user.getId());
         return "redirect:/view/lists/" + dto.listId();
+    }
+
+    @PostMapping("/lists/{id}/delete")
+    public String deleteList(@PathVariable Long id) {
+        UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        deleteListByIdUseCase.execute(id, user.getId());
+        return "redirect:/view/home";
     }
 
     private UserEntity getAuthenticatedUser() {
