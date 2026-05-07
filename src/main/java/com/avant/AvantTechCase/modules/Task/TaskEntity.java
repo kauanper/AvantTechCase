@@ -1,33 +1,34 @@
-package com.avant.AvantTechCase.modules.List;
+package com.avant.AvantTechCase.modules.Task;
 
-import com.avant.AvantTechCase.modules.User.UserEntity;
+import com.avant.AvantTechCase.modules.List.ListEntity; // Importe a sua ListEntity
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
-@Table(name = "lists")
+@Table(name = "tasks")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ListEntity {
+public class TaskEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
-
     private String title;
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "list_id", nullable = false)
+    private ListEntity list;
+
     @CreationTimestamp
     private LocalDateTime created_at;
+
+    private LocalDateTime deadline;
 }

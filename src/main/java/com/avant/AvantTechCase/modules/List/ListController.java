@@ -61,8 +61,6 @@ public class ListController {
         return ResponseEntity.ok(response);
     }
 
-
-    // Deletar por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -70,7 +68,6 @@ public class ListController {
         return ResponseEntity.noContent().build();
     }
 
-    // Editar por ID
     @PutMapping("/{id}")
     public ResponseEntity<ListResponseDTO> update(@PathVariable Long id, @RequestBody @Valid ListRequestDTO dto) {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
