@@ -23,6 +23,9 @@ public class TaskEntity {
     private String title;
     private String description;
 
+    @Enumerated(EnumType.STRING)
+    private TaskStatus status;
+
     @ManyToOne
     @JoinColumn(name = "list_id", nullable = false)
     private ListEntity list;
