@@ -3,6 +3,7 @@ package com.avant.AvantTechCase.modules.List;
 import com.avant.AvantTechCase.modules.List.DTOs.ListRequestDTO;
 import com.avant.AvantTechCase.modules.List.DTOs.ListResponseDTO;
 import com.avant.AvantTechCase.modules.List.Services.CreateListUseCase;
+import com.avant.AvantTechCase.modules.List.Services.DeleteByIdUseCase;
 import com.avant.AvantTechCase.modules.List.Services.FindByIdUseCase;
 import com.avant.AvantTechCase.modules.User.UserEntity;
 import jakarta.validation.Valid;
@@ -25,6 +26,9 @@ public class ListController {
 
     @Autowired
     FindByIdUseCase findByIdUseCase;
+
+    @Autowired
+    DeleteByIdUseCase deleteByIdUseCase;
 
     @PostMapping
     public ResponseEntity<?> createNews(@RequestBody @Valid ListRequestDTO dto) {
@@ -54,15 +58,14 @@ public class ListController {
     }
 
 
-/*
     // Deletar por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        listService.deleteList(id, user.getId());
+        deleteByIdUseCase.execute(id, user.getId());
         return ResponseEntity.noContent().build();
     }
-
+/*
     // Editar por ID
     @PutMapping("/{id}")
     public ResponseEntity<ListResponseDTO> update(@PathVariable Long id, @RequestBody @Valid ListRequestDTO dto) {
