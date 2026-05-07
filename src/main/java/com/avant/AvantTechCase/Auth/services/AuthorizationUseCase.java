@@ -1,4 +1,4 @@
-package com.avant.AvantTechCase.User.services;
+package com.avant.AvantTechCase.Auth.services;
 
 import com.avant.AvantTechCase.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

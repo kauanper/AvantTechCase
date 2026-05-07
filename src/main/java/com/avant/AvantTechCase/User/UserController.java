@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("/lombok")
+    @GetMapping("/test/lombok")
     public String testLombok() {
         // Testando o @AllArgsConstructor
         UserEntity user = new UserEntity(1L, "kauan_admin", "senha123");
