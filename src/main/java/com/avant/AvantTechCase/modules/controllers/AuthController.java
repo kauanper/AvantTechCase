@@ -1,4 +1,4 @@
-package com.avant.AvantTechCase.modules.Auth;
+package com.avant.AvantTechCase.modules.controllers;
 
 import com.avant.AvantTechCase.modules.Auth.DTOs.AuthenticationDTO;
 import com.avant.AvantTechCase.modules.Auth.DTOs.LoginResponseDTO; // Importe seu DTO de resposta

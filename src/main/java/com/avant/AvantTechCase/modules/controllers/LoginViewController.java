@@ -1,4 +1,4 @@
-package com.avant.AvantTechCase.modules.Auth;
+package com.avant.AvantTechCase.modules.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -34,7 +34,7 @@ public class LoginViewController {
             HttpSession session = request.getSession(true);
             session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 
-            return "redirect:/view/lists"; // Login sucesso: vai para as listas
+            return "redirect:/view/home"; // Login sucesso: vai para as listas
         } catch (Exception e) {
             return "redirect:/view/login?error"; // Login falhou: volta com erro
         }

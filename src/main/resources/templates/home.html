@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Minhas Listas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+        <span class="navbar-brand mb-0 h1">Task Manager</span>
+        <span class="text-light" th:text="'Olá, ' + ${userName}">Usuário</span>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="card shadow-sm mb-5">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="bi bi-plus-circle"></i> Nova Lista de Tarefas</h5>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/view/lists/create}" method="post" class="row g-3">
+                <div class="col-md-4">
+                    <input type="text" name="title" class="form-control" placeholder="Título da lista (ex: Trabalho)" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="description" class="form-control" placeholder="Uma breve descrição...">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success w-100">Criar Lista</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h4 class="mb-3">Minhas Listas</h4>
+    <div class="row">
+        <div class="col-md-4 mb-4" th:each="list : ${lists}">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary" th:text="${list.title}">Título</h5>
+                    <p class="card-text text-muted" th:text="${list.description}">Descrição</p>
+                    <p class="small text-secondary">
+                        <i class="bi bi-calendar"></i> Criada em: <span th:text="${#temporals.format(list.createdAt, 'dd/MM/yyyy')}">01/01</span>
+                    </p>
+                </div>
+                <div class="card-footer bg-transparent border-0 pb-3">
+                    <a th:href="@{/view/lists/{id}/tasks(id=${list.id})}" class="btn btn-outline-primary w-100">
+                        Abrir Tarefas <i class="bi bi-arrow-right-short"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center mt-5" th:if="${lists.isEmpty()}">
+            <i class="bi bi-emoji-neutral display-1 text-muted"></i>
+            <p class="lead text-muted mt-3">Você ainda não tem listas. Comece criando uma acima!</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

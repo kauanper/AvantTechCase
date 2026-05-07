@@ -2,10 +2,7 @@ package com.avant.AvantTechCase.modules.User;
 
 import com.avant.AvantTechCase.modules.List.ListEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +27,7 @@ public class UserEntity implements UserDetails {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<ListEntity> lists;
 
     @Override

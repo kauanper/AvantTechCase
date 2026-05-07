@@ -3,10 +3,7 @@ package com.avant.AvantTechCase.modules.List;
 import com.avant.AvantTechCase.modules.Task.TaskEntity;
 import com.avant.AvantTechCase.modules.User.UserEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
