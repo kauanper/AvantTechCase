@@ -1,5 +1,6 @@
 package com.avant.AvantTechCase.User;
 
+import com.avant.AvantTechCase.Auth.Roles;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -25,7 +26,7 @@ public class User implements UserDetails {
     private Long id;
     private String login;
     private String password;
-    private String roles;
+    private Roles role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
