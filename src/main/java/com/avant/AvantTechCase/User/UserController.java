@@ -11,7 +11,7 @@ public class UserController {
     @GetMapping("/test/lombok")
     public String testLombok() {
         // Testando o @AllArgsConstructor
-        UserEntity user = new UserEntity(1L, "kauan_admin", "senha123");
+        UserEntity user = new UserEntity(1L, "kauan", "kauan_admin", "senha123");
 
         // Testando o @Data (Getter)
         return "Lombok funcionando! Usuário: " + user.getLogin() + " com ID: " + user.getId();
