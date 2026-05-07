@@ -35,7 +35,7 @@ public class TaskController {
     @PostMapping
     public ResponseEntity<TaskResponseDTO> create(@RequestBody @Valid TaskRequestDTO dto) {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        var response = createTaskUseCase.execute(dto, user.getId());
+        TaskResponseDTO response = createTaskUseCase.execute(dto, user.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
