@@ -1,8 +1,5 @@
 package com.avant.AvantTechCase.modules.Task.Services;
 
-import com.avant.AvantTechCase.modules.List.ListEntity;
-import com.avant.AvantTechCase.modules.List.ListRepository;
-import com.avant.AvantTechCase.modules.Task.DTOs.ListWithTasksResponseDTO;
 import com.avant.AvantTechCase.modules.Task.DTOs.TaskResponseDTO;
 import com.avant.AvantTechCase.modules.Task.TaskRepository;
 import com.avant.AvantTechCase.modules.Task.TaskStatus;
