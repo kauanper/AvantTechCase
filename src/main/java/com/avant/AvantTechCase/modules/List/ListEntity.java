@@ -1,5 +1,6 @@
 package com.avant.AvantTechCase.modules.List;
 
+import com.avant.AvantTechCase.modules.Task.TaskEntity;
 import com.avant.AvantTechCase.modules.User.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Table(name = "lists")
 @Entity
@@ -30,4 +32,7 @@ public class ListEntity {
 
     @CreationTimestamp
     private LocalDateTime created_at;
+
+    @OneToMany(mappedBy = "list", fetch = FetchType.LAZY)
+    private List<TaskEntity> tasks;
 }
