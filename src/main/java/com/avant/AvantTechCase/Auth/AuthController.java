@@ -2,7 +2,6 @@ package com.avant.AvantTechCase.Auth;
 
 import com.avant.AvantTechCase.Auth.DTOs.AuthenticationDTO;
 import jakarta.validation.Valid;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,4 +29,6 @@ public class AuthController {
         return ResponseEntity.ok().build();
 
     }
+
+
 }

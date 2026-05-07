@@ -1,19 +1,17 @@
 package com.avant.AvantTechCase.User;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.avant.AvantTechCase.User.DTOs.UserRegisterDTO;
+import com.avant.AvantTechCase.User.DTOs.UserResponseDTO;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("/test/lombok")
-    public String testLombok() {
-        // Testando o @AllArgsConstructor
-        UserEntity user = new UserEntity(1L, "kauan", "kauan_admin", "senha123");
-
-        // Testando o @Data (Getter)
-        return "Lombok funcionando! Usuário: " + user.getLogin() + " com ID: " + user.getId();
+    @PostMapping("/register")
+    public ResponseEntity<UserResponseDTO> register(@RequestBody UserRegisterDTO data) {
+        UserResponseDTO dto = new UserResponseDTO(1L, data.name(), data.login(), data.password());
+        return ResponseEntity.ok(dto);
     }
 }

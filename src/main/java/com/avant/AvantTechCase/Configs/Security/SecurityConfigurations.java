@@ -22,7 +22,7 @@ public class SecurityConfigurations {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/user/test/lombok").permitAll()
+                        .requestMatchers("/user/register").permitAll()
                         .anyRequest().authenticated()
                 )
                 // Necessário para o H2 Console conseguir abrir os frames no navegador
