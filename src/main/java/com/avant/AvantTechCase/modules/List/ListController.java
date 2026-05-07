@@ -5,6 +5,7 @@ import com.avant.AvantTechCase.modules.List.DTOs.ListResponseDTO;
 import com.avant.AvantTechCase.modules.List.Services.CreateListUseCase;
 import com.avant.AvantTechCase.modules.List.Services.DeleteByIdUseCase;
 import com.avant.AvantTechCase.modules.List.Services.FindByIdUseCase;
+import com.avant.AvantTechCase.modules.List.Services.UpdateByIdUseCase;
 import com.avant.AvantTechCase.modules.User.UserEntity;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class ListController {
 
     @Autowired
     DeleteByIdUseCase deleteByIdUseCase;
+
+    @Autowired
+    UpdateByIdUseCase updateByIdUseCase;
 
     @PostMapping
     public ResponseEntity<?> createNews(@RequestBody @Valid ListRequestDTO dto) {
@@ -65,15 +69,13 @@ public class ListController {
         deleteByIdUseCase.execute(id, user.getId());
         return ResponseEntity.noContent().build();
     }
-/*
+
     // Editar por ID
     @PutMapping("/{id}")
     public ResponseEntity<ListResponseDTO> update(@PathVariable Long id, @RequestBody @Valid ListRequestDTO dto) {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        var updated = listService.updateList(id, user.getId(), dto);
+        var updated = updateByIdUseCase.execute(id, user.getId(), dto);
         return ResponseEntity.ok(updated);
     }
 
-}
- */
 }
