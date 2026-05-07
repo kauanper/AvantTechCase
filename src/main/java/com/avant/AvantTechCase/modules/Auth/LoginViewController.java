@@ -23,7 +23,6 @@ public class LoginViewController {
         return "login";
     }
 
-    // Processa o formulário de login
     @PostMapping("/login")
     public String loginSubmit(String login, String password, HttpServletRequest request) {
         try {
