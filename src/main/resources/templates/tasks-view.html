@@ -3,66 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${list.title}"></title>
+
+    <!-- Bibliotecas Externas -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <style>
-        :root {
-            --status-pendente: #ff4d4d;
-            --status-andamento: #ffa502;
-            --status-concluida: #2ed573;
-        }
 
-        body { background-color: #f8f9fa; font-family: 'Inter', sans-serif; }
-
-        .badge-status {
-            font-size: 0.75rem;
-            padding: 0.4em 0.8em;
-            border-radius: 50rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: bold;
-        }
-
-        /* Cores de Fundo dos Badges */
-        .bg-pendente { background-color: rgba(255, 77, 77, 0.15) !important; color: var(--status-pendente) !important; }
-        .bg-andamento { background-color: rgba(255, 165, 2, 0.15) !important; color: var(--status-andamento) !important; }
-        .bg-concluida { background-color: rgba(46, 213, 115, 0.15) !important; color: var(--status-concluida) !important; }
-
-        .task-card {
-            border: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            background: #fff;
-            border-left: 5px solid transparent; /* Base para a borda lateral */
-        }
-        .task-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
-        }
-
-        /* Cores das Bordas Laterais */
-        .border-pendente { border-left-color: var(--status-pendente) !important; }
-        .border-andamento { border-left-color: var(--status-andamento) !important; }
-        .border-concluida { border-left-color: var(--status-concluida) !important; }
-
-        .task-title { font-size: 1.1rem; color: #2d3436; }
-        .deadline-text { font-size: 0.85rem; color: #636e72; }
-
-        .btn-action {
-            border-radius: 8px;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        }
-    </style>
+    <!-- Seu Arquivo CSS Refatorado -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
 <div class="container py-5">
-    <!-- Cabeçalho -->
+    <!-- Cabeçalho de Navegação -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <a href="/view/home" class="btn btn-outline-secondary btn-sm border-0">
             <i class="bi bi-chevron-left"></i> Home
@@ -70,12 +22,13 @@
         <span class="text-muted small">Avant Tech Jr Case &bull; <span th:text="${list.title}"></span></span>
     </div>
 
-    <!-- Título da Lista -->
+    <!-- Título e Descrição da Lista -->
     <div class="mb-5">
         <form th:action="@{/view/lists/{id}/update(id=${list.id})}" method="post" class="row g-3 align-items-end">
             <div class="col-lg-4">
                 <label class="form-label text-muted small fw-bold">NOME DA LISTA</label>
-                <input type="text" name="title" th:value="${list.title}" class="form-control form-control-lg border-0 bg-transparent fw-bold p-0 shadow-none" style="font-size: 2rem;">
+                <!-- Usando a nova classe .list-title-input do style.css -->
+                <input type="text" name="title" th:value="${list.title}" class="form-control list-title-input">
             </div>
             <div class="col-lg-6">
                 <input type="text" name="description" th:value="${list.description}" class="form-control border-0 bg-transparent p-0 text-muted shadow-none" placeholder="Adicione uma descrição para esta lista...">
@@ -87,7 +40,7 @@
     </div>
 
     <div class="row">
-        <!-- Coluna Esquerda: Form Criar -->
+        <!-- Coluna Esquerda: Formulário de Criação -->
         <div class="col-lg-4 mb-4">
             <div class="card border-0 shadow-sm p-4 rounded-4 position-sticky" style="top: 20px;">
                 <h5 class="mb-4 fw-bold">Nova Tarefa</h5>
@@ -112,7 +65,7 @@
             </div>
         </div>
 
-        <!-- Coluna Direita: Cards de Tarefas -->
+        <!-- Coluna Direita: Listagem de Cards -->
         <div class="col-lg-8">
             <div th:if="${tasks.isEmpty()}" class="text-center py-5">
                 <i class="bi bi-clipboard2-check text-muted display-1 opacity-25"></i>
@@ -121,14 +74,14 @@
 
             <div class="row g-3">
                 <div class="col-12" th:each="task : ${tasks}">
-                    <!-- Lógica de Cor do Card Corrigida -->
+                    <!-- Card com Borda Dinâmica -->
                     <div class="card task-card shadow-sm"
                          th:classappend="${task.status.toString() == 'PENDENTE' ? 'border-pendente' : (task.status.toString() == 'EM_ANDAMENTO' ? 'border-andamento' : 'border-concluida')}">
 
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
-                                    <!-- Lógica de Cor do Badge Corrigida -->
+                                    <!-- Badge com Cor Dinâmica -->
                                     <span class="badge-status mb-2 d-inline-block"
                                           th:classappend="${task.status.toString() == 'PENDENTE' ? 'bg-pendente' : (task.status.toString() == 'EM_ANDAMENTO' ? 'bg-andamento' : 'bg-concluida')}"
                                           th:text="${task.status}">
@@ -143,7 +96,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Ações -->
                                 <div class="d-flex gap-2">
                                     <form th:action="@{/view/tasks/{id}/update(id=${task.id})}" method="post" th:if="${task.status.toString() != 'CONCLUIDA'}">
                                         <input type="hidden" name="listId" th:value="${list.id}">
@@ -169,7 +121,6 @@
                         </div>
                     </div>
 
-                    <!-- Modal de Edição -->
                     <div class="modal fade" th:id="'editModal' + ${task.id}" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content border-0 shadow-lg rounded-4">
@@ -211,8 +162,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Fim Modal -->
-
                 </div>
             </div>
         </div>
