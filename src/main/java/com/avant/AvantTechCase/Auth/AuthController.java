@@ -27,7 +27,6 @@ public class AuthController {
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
         return ResponseEntity.ok().build();
-
     }
 
 
