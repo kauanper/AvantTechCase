@@ -1,12 +1,12 @@
 package com.avant.AvantTechCase.modules.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.avant.AvantTechCase.modules.User.UserEntity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -18,9 +18,16 @@ import java.time.LocalDateTime;
 public class ListEntity {
 
     @Id
-    long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    String title;
-    String description;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
+
+    private String title;
+    private String description;
+
+    @CreationTimestamp
     private LocalDateTime created_at;
 }

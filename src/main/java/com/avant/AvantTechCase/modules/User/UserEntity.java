@@ -1,5 +1,6 @@
 package com.avant.AvantTechCase.modules.User;
 
+import com.avant.AvantTechCase.modules.List.ListEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,9 @@ public class UserEntity implements UserDetails {
     private String name;
     private String login;
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ListEntity> lists;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
