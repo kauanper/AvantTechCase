@@ -4,7 +4,9 @@ import com.avant.AvantTechCase.modules.List.DTOs.ListRequestDTO;
 import com.avant.AvantTechCase.modules.List.Services.*;
 import com.avant.AvantTechCase.modules.Task.DTOs.TaskRequestDTO;
 import com.avant.AvantTechCase.modules.Task.Services.CreateTaskUseCase;
+import com.avant.AvantTechCase.modules.Task.Services.DeleteTaskUseCase;
 import com.avant.AvantTechCase.modules.Task.Services.ListAllTasksByUserUseCase;
+import com.avant.AvantTechCase.modules.Task.Services.UpdateTaskUseCase;
 import com.avant.AvantTechCase.modules.User.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,6 +25,8 @@ public class HomeViewController {
     @Autowired private ListAllTasksByUserUseCase listAllTasksByUserUseCase;
     @Autowired private CreateTaskUseCase createTaskUseCase;
     @Autowired private DeleteByIdUseCase deleteListByIdUseCase;
+    @Autowired private DeleteTaskUseCase deleteTaskUseCase;
+    @Autowired private UpdateTaskUseCase updateTaskUseCase;
 
     @GetMapping("/home")
     public String home(Model model) {
@@ -78,5 +82,19 @@ public class HomeViewController {
 
     private UserEntity getAuthenticatedUser() {
         return (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    @PostMapping("/tasks/{id}/delete")
+    public String deleteTask(@PathVariable Long id, @RequestParam Long listId) {
+        UserEntity user = getAuthenticatedUser();
+        deleteTaskUseCase.execute(id, user.getId());
+        return "redirect:/view/lists/" + listId;
+    }
+
+    @PostMapping("/tasks/{id}/update")
+    public String updateTask(@PathVariable Long id, TaskRequestDTO dto) {
+        UserEntity user = getAuthenticatedUser();
+        updateTaskUseCase.execute(id, user.getId(), dto);
+        return "redirect:/view/lists/" + dto.listId();
     }
 }
