@@ -1,5 +1,6 @@
 package com.avant.AvantTechCase.modules.Task;
 
+import com.avant.AvantTechCase.modules.Task.DTOs.ListWithTasksResponseDTO;
 import com.avant.AvantTechCase.modules.Task.DTOs.TaskRequestDTO;
 import com.avant.AvantTechCase.modules.Task.DTOs.TaskResponseDTO;
 import com.avant.AvantTechCase.modules.Task.Services.*;
@@ -40,9 +41,9 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TaskResponseDTO>> listAll() {
+    public ResponseEntity<List<ListWithTasksResponseDTO>> listAll() {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        var response = listAllTasksByUserUseCase.execute(user.getId());
+        List<ListWithTasksResponseDTO> response = listAllTasksByUserUseCase.execute(user.getId());
         return ResponseEntity.ok(response);
     }
 
