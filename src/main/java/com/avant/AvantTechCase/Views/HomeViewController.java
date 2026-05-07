@@ -1,4 +1,4 @@
-package com.avant.AvantTechCase.modules.List.controllers;
+package com.avant.AvantTechCase.Views;
 
 import com.avant.AvantTechCase.modules.List.DTOs.ListRequestDTO;
 import com.avant.AvantTechCase.modules.List.Services.*;
