@@ -1,6 +1,5 @@
 package com.avant.AvantTechCase.modules.Task;
 
-import com.avant.AvantTechCase.modules.Task.DTOs.ListWithTasksResponseDTO;
 import com.avant.AvantTechCase.modules.Task.DTOs.TaskRequestDTO;
 import com.avant.AvantTechCase.modules.Task.DTOs.TaskResponseDTO;
 import com.avant.AvantTechCase.modules.Task.Services.*;
@@ -9,6 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,10 +40,12 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @GetMapping
-    public ResponseEntity<List<ListWithTasksResponseDTO>> listAll() {
-        UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<ListWithTasksResponseDTO> response = listAllTasksByUserUseCase.execute(user.getId());
+    @GetMapping("/{listId}/tasks")
+    public ResponseEntity<List<TaskResponseDTO>> listTasksByList(
+            @PathVariable Long listId,
+            @AuthenticationPrincipal UserEntity user
+    ) {
+        var response = listAllTasksByUserUseCase.execute(listId, user.getId());
         return ResponseEntity.ok(response);
     }
 
