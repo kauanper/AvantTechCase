@@ -1,4 +1,4 @@
-package com.avant.AvantTechCase.User;
+package com.avant.AvantTechCase.modules.User;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

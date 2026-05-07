@@ -1,9 +1,9 @@
-package com.avant.AvantTechCase.Auth;
+package com.avant.AvantTechCase.modules.Auth;
 
-import com.avant.AvantTechCase.Auth.DTOs.AuthenticationDTO;
-import com.avant.AvantTechCase.Auth.DTOs.LoginResponseDTO; // Importe seu DTO de resposta
+import com.avant.AvantTechCase.modules.Auth.DTOs.AuthenticationDTO;
+import com.avant.AvantTechCase.modules.Auth.DTOs.LoginResponseDTO; // Importe seu DTO de resposta
 import com.avant.AvantTechCase.Configs.Security.TokenService;
-import com.avant.AvantTechCase.User.UserEntity;
+import com.avant.AvantTechCase.modules.User.UserEntity;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

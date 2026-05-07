@@ -1,4 +1,4 @@
-package com.avant.AvantTechCase.User.DTOs;
+package com.avant.AvantTechCase.modules.User.DTOs;
 
 import lombok.Data;
 

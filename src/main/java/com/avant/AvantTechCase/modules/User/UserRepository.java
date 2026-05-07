@@ -1,4 +1,4 @@
-package com.avant.AvantTechCase.User;
+package com.avant.AvantTechCase.modules.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;

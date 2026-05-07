@@ -1,9 +1,9 @@
-package com.avant.AvantTechCase.User.services;
+package com.avant.AvantTechCase.modules.User.services;
 
-import com.avant.AvantTechCase.User.DTOs.UserRegisterDTO;
-import com.avant.AvantTechCase.User.DTOs.UserResponseDTO;
-import com.avant.AvantTechCase.User.UserEntity;
-import com.avant.AvantTechCase.User.UserRepository;
+import com.avant.AvantTechCase.modules.User.DTOs.UserRegisterDTO;
+import com.avant.AvantTechCase.modules.User.DTOs.UserResponseDTO;
+import com.avant.AvantTechCase.modules.User.UserEntity;
+import com.avant.AvantTechCase.modules.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

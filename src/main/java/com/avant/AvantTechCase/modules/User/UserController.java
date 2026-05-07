@@ -1,8 +1,8 @@
-package com.avant.AvantTechCase.User;
+package com.avant.AvantTechCase.modules.User;
 
-import com.avant.AvantTechCase.User.DTOs.UserRegisterDTO;
-import com.avant.AvantTechCase.User.DTOs.UserResponseDTO;
-import com.avant.AvantTechCase.User.services.CreateUserUseCase;
+import com.avant.AvantTechCase.modules.User.DTOs.UserRegisterDTO;
+import com.avant.AvantTechCase.modules.User.DTOs.UserResponseDTO;
+import com.avant.AvantTechCase.modules.User.services.CreateUserUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;

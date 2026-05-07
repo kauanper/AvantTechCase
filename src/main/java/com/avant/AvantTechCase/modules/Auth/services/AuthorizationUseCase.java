@@ -1,6 +1,6 @@
-package com.avant.AvantTechCase.Auth.services;
+package com.avant.AvantTechCase.modules.Auth.services;
 
-import com.avant.AvantTechCase.User.UserRepository;
+import com.avant.AvantTechCase.modules.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,6 +1,6 @@
 package com.avant.AvantTechCase.Configs.Security;
 
-import com.avant.AvantTechCase.User.UserRepository;
+import com.avant.AvantTechCase.modules.User.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
