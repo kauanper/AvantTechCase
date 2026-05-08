@@ -19,7 +19,6 @@ body {
     font-weight: bold;
 }
 
-/* Cores de Fundo dos Badges */
 .bg-pendente {
     background-color: rgba(255, 77, 77, 0.15) !important;
     color: var(--status-pendente) !important;
@@ -46,7 +45,6 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
 }
 
-/* Cores das Bordas Laterais */
 .border-pendente { border-left-color: var(--status-pendente) !important; }
 .border-andamento { border-left-color: var(--status-andamento) !important; }
 .border-concluida { border-left-color: var(--status-concluida) !important; }
@@ -64,7 +62,6 @@ body {
     padding: 0;
 }
 
-/* Classe utilitária para o input de título grande */
 .list-title-input {
     font-size: 2rem;
     font-weight: bold;

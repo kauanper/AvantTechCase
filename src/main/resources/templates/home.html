@@ -44,13 +44,11 @@
     <h4 class="mb-4 text-secondary">Minhas Listas</h4>
 
     <div class="row">
-        <!-- Loop do Thymeleaf pelas listas -->
         <div class="col-md-4 mb-4" th:each="list : ${lists}">
             <div class="card h-100 shadow-sm border-0 transition-hover">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <h5 class="card-title text-primary mb-0" th:text="${list.title}">Título</h5>
-                        <!-- Ícone de indicação de tarefas (estético) -->
                         <i class="bi bi-folder2-open text-muted"></i>
                     </div>
                     <p class="card-text text-muted small" th:text="${list.description != null && !list.description.isEmpty() ? list.description : 'Sem descrição informada.'}">Descrição</p>
