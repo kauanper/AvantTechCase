@@ -7,7 +7,8 @@ Cada usuário pode cadastrar múltiplas listas, possibilitando a separação de 
 O projeto foi desenvolvido com foco em boas práticas de desenvolvimento backend e frontend, utilizando uma arquitetura organizada, operações CRUD completas e integração entre aplicação e banco de dados, garantindo escalabilidade e facilidade de manutenção.
 
 ## Tecnologias utilizadas 
-### Backend
+
+#### Backend
 - Java 17
 - Spring Boot
 - Spring Security
@@ -18,10 +19,10 @@ O projeto foi desenvolvido com foco em boas práticas de desenvolvimento backend
 - Maven
 - Lombok
 
-### Banco de Dados
+#### Banco de Dados
 - H2 Database
 
-### Frontend
+#### Frontend
 - Thymeleaf
 - Bootstrap 5
 - Bootstrap Icons
@@ -29,7 +30,8 @@ O projeto foi desenvolvido com foco em boas práticas de desenvolvimento backend
 - CSS3
 
 ## Funcionalidades 
-## Backend
+
+#### Backend
 
 A aplicação permite:
 
@@ -46,9 +48,7 @@ A aplicação permite:
 - Registrar usuários
 - Autenticar usuários utilizando JWT
 
----
-
-## Frontend
+#### Frontend
 
 A aplicação permite:
 
@@ -65,7 +65,55 @@ A aplicação permite:
 OBS: (Não integrei o front com o endpoint para deletar uma lista, então ficou apenas no backend)
 
 ## Como executar o projeto 
-Explique o passo a passo para rodar o projeto localmente. 
+
+#### Pré-requisitos
+
+Para executar o projeto, é necessário ter instalado:
+
+- Java 17 ou superior
+- Maven
+
+---
+
+## Executando a Aplicação
+
+1. Clone ou baixe o repositório do projeto.
+2. Abra o projeto em uma IDE de sua preferência, como IntelliJ IDEA ou VS Code.
+3. Aguarde o Maven baixar todas as dependências do projeto.
+4. Execute a classe principal do Spring Boot.
+5. Após iniciar, a aplicação estará disponível no navegador.
+
+---
+
+## Acessando a Aplicação
+
+Para registrar um novo usuário, utilize uma ferramenta de testes de API, como Postman ou Insomnia.
+
+#### Endpoint
+
+```http
+POST http://localhost:8080/user/register
+```
+
+#### Corpo da Requisição
+
+```json
+{
+  "name": "Seu Nome",
+  "login": "Seu Login",
+  "password": "suasenha"
+}
+```
+
+Após isso, você pode usar livremente abrindo seu navegador e acessando:
+
+```txt
+http://localhost:8080/view/login
+```
+
+Entre com seu login e senha
+
+ 
 ## Decisões tomadas 
 Explique decisões importantes, como: - como listas e tarefas se relacionam; - o que acontece ao remover uma lista com tarefas; - como os dados são armazenados.  
 ## Observações 
