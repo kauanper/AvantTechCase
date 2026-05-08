@@ -5,8 +5,22 @@ Este projeto foi desenvolvido como solução para um case técnico da AvantTechJ
 Cada usuário pode cadastrar múltiplas listas, possibilitando a separação de tarefas por categorias, objetivos ou contextos específicos. Além disso, cada lista suporta diversas tarefas, que podem ser criadas, atualizadas, listadas e removidas conforme necessário, oferecendo uma experiência completa de organização pessoal.
 
 O projeto foi desenvolvido com foco em boas práticas de desenvolvimento backend e frontend, utilizando uma arquitetura organizada, operações CRUD completas e integração entre aplicação e banco de dados, garantindo escalabilidade e facilidade de manutenção.
+
 ## Tecnologias utilizadas 
-Liste as tecnologias usadas no projeto. 
+Java 17
+Spring Boot
+Spring Security
+Spring Data JPA
+Hibernate
+JWT
+Maven
+H2 Database
+Thymeleaf
+Bootstrap 5
+Bootstrap Icons
+HTML5 e CSS3
+Lombok
+
 ## Funcionalidades 
 Liste as funcionalidades implementadas. 
 ## Como executar o projeto 
