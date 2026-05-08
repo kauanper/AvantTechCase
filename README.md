@@ -75,7 +75,7 @@ Para executar o projeto, é necessário ter instalado:
 
 ---
 
-## Executando a Aplicação
+#### Executando a Aplicação
 
 1. Clone ou baixe o repositório do projeto.
 2. Abra o projeto em uma IDE de sua preferência, como IntelliJ IDEA ou VS Code.
@@ -85,7 +85,7 @@ Para executar o projeto, é necessário ter instalado:
 
 ---
 
-## Acessando a Aplicação
+#### Acessando a Aplicação
 
 Para registrar um novo usuário, utilize uma ferramenta de testes de API, como Postman ou Insomnia.
 
@@ -113,8 +113,12 @@ http://localhost:8080/view/login
 
 Entre com seu login e senha
 
- 
+
 ## Decisões tomadas 
+Explique decisões importantes, como: - como listas e tarefas se relacionam; - o que acontece ao remover uma lista com tarefas; - como os dados são armazenados
+
+ 
+## Observações 
 
 #### Decisões de Desenvolvimento
 
