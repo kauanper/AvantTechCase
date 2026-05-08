@@ -29,7 +29,41 @@ O projeto foi desenvolvido com foco em boas práticas de desenvolvimento backend
 - CSS3
 
 ## Funcionalidades 
-Liste as funcionalidades implementadas. 
+## Backend
+
+A aplicação permite:
+
+- Cadastrar uma nova lista
+- Listar todas as listas
+- Buscar uma lista por ID
+- Atualizar os dados de uma lista
+- Remover uma lista
+- Cadastrar uma nova tarefa vinculada a uma lista
+- Listar todas as tarefas
+- Buscar uma tarefa por ID
+- Atualizar os dados de uma tarefa
+- Remover uma tarefa
+- Registrar usuários
+- Autenticar usuários utilizando JWT
+
+---
+
+## Frontend
+
+A aplicação permite:
+
+- Exibir as listas criadas
+- Adicionar uma nova lista
+- Editar uma lista existente
+- Acessar as tarefas de uma lista
+- Exibir uma lista de tarefas
+- Adicionar uma nova tarefa
+- Editar uma tarefa existente
+- Remover uma tarefa
+- Alterar o status de uma tarefa
+
+OBS: (Não integrei o front com o endpoint para deletar uma lista, então ficou apenas no backend)
+
 ## Como executar o projeto 
 Explique o passo a passo para rodar o projeto localmente. 
 ## Decisões tomadas 
