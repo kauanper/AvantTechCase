@@ -7,19 +7,26 @@ Cada usuário pode cadastrar múltiplas listas, possibilitando a separação de 
 O projeto foi desenvolvido com foco em boas práticas de desenvolvimento backend e frontend, utilizando uma arquitetura organizada, operações CRUD completas e integração entre aplicação e banco de dados, garantindo escalabilidade e facilidade de manutenção.
 
 ## Tecnologias utilizadas 
-Java 17
-Spring Boot
-Spring Security
-Spring Data JPA
-Hibernate
-JWT
-Maven
-H2 Database
-Thymeleaf
-Bootstrap 5
-Bootstrap Icons
-HTML5 e CSS3
-Lombok
+### Backend
+- Java 17
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- Hibernate
+- JWT (JSON Web Token)
+- Bean Validation
+- Maven
+- Lombok
+
+### Banco de Dados
+- H2 Database
+
+### Frontend
+- Thymeleaf
+- Bootstrap 5
+- Bootstrap Icons
+- HTML5
+- CSS3
 
 ## Funcionalidades 
 Liste as funcionalidades implementadas. 
