@@ -115,7 +115,36 @@ Entre com seu login e senha
 
 
 ## Decisões tomadas 
-Explique decisões importantes, como: - como listas e tarefas se relacionam; - o que acontece ao remover uma lista com tarefas; - como os dados são armazenados
+
+#### Modelagem de Dados: Relação Um-para-Muitos (1:N)
+A aplicação foi estruturada para que exista uma hierarquia clara entre os dados:
+- Decisão: Uma Lista funciona como um contêiner pai para múltiplas Tarefas.
+- Lógica: Implementamos a anotação @OneToMany no Java. Isso significa que cada tarefa possui uma chave estrangeira apontando para sua lista de origem.
+- Objetivo: Permitir que o usuário organize diferentes contextos de vida ou trabalho (ex: "Compras", "Faculdade", "Trabalho") de forma isolada e organizada.
+
+#### Integridade Referencial: Exclusão em Cascata (Cascade Delete)
+Uma decisão crítica para a saúde do banco de dados foi o comportamento de remoção.
+- Decisão: Ao excluir uma Lista, o sistema remove automaticamente todas as Tarefas vinculadas a ela.
+- Lógica: Configuramos o cascade = CascadeType.ALL e orphanRemoval = true.
+- Objetivo: Evitar "dados órfãos". Em um sistema de gerenciamento, uma tarefa não faz sentido sem o seu contexto (Lista). Isso garante que o banco de dados permaneça limpo e consistente, sem registros inúteis.
+
+#### Persistência de Dados: Banco de Dados Relacional e Spring Data JPA
+Para garantir que as informações não sejam perdidas ao desligar o servidor, focamos em persistência sólida.
+- Decisão: Uso de banco de dados SQL (como H2 para testes ou PostgreSQL/MySQL para produção).
+- Lógica: Utilizamos o Spring Data JPA (Java Persistence API). Ele atua como uma ponte que transforma nossos objetos Java diretamente em tabelas no banco.
+- Objetivo: Segurança e escalabilidade. Bancos relacionais são excelentes para lidar com as conexões entre usuários, listas e tarefas, garantindo que os dados sejam salvos de forma estruturada.
+
+#### Renderização de Interface: Server-Side Rendering (SSR) com Thymeleaf
+Escolhemos processar a interface no servidor antes de enviá-la ao navegador.
+- Decisão: Utilizar o motor de templates Thymeleaf em vez de um framework de front-end separado (como React ou Vue).
+- Lógica: O servidor Java lê o HTML, processa as condicionais (como as cores dos status) e entrega o HTML final para o usuário.
+- Objetivo: Simplicidade e Performance Inicial. Como o HTML já chega pronto, a página carrega mais rápido e a lógica de negócio (como quem pode ver qual tarefa) fica protegida dentro do servidor, não exposta no navegador.
+
+#### Feedback Visual e UX (Experiência do Usuário)
+A interface foi projetada para ser comunicativa sem a necessidade de leitura constante de textos.
+- Decisão: Cores semânticas baseadas no status (PENDENTE = Vermelho, EM_ANDAMENTO = Laranja, CONCLUIDA = Verde).
+- Lógica: Uso da classe th:classappend do Thymeleaf para injetar CSS dinamicamente.
+- Objetivo: Reduzir a carga cognitiva do usuário, permitindo que ele entenda a prioridade e o estado da sua lista de tarefas com apenas um olhar rápido.
 
  
 ## Observações 
