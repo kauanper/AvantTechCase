@@ -115,6 +115,44 @@ Entre com seu login e senha
 
  
 ## Decisões tomadas 
-Explique decisões importantes, como: - como listas e tarefas se relacionam; - o que acontece ao remover uma lista com tarefas; - como os dados são armazenados.  
-## Observações 
+
+#### Decisões de Desenvolvimento
+
+Algumas decisões arquiteturais e tecnológicas foram tomadas principalmente visando agilidade no desenvolvimento do projeto, considerando o tempo disponível para implementação.
+
+---
+
+#### Escolha do H2 Database e Thymeleaf
+
+Foi utilizado o banco de dados H2 por ser leve, simples de configurar e ideal para ambientes de desenvolvimento e testes.
+
+No frontend, optei pelo uso do Thymeleaf, principalmente pela sua integração nativa com o Spring Boot, permitindo uma construção mais rápida da interface. Essa abordagem também facilitou o reaproveitamento dos endpoints já existentes da API, acelerando significativamente o desenvolvimento da aplicação web.
+
+---
+
+#### Implementação de Autenticação JWT
+
+Como diferencial do projeto, decidi implementar autenticação utilizando JWT (JSON Web Token).
+
+Além de adicionar uma camada de segurança à aplicação, essa decisão também teve como objetivo fortalecer meus estudos e prática com autenticação e autorização em aplicações backend.
+
+Por conta disso, foi criada uma nova entidade `User`, juntamente com endpoints adicionais para registro e autenticação de usuários.
+
+---
+
+#### Organização e Arquitetura
+
+Durante o desenvolvimento, procurei manter uma arquitetura organizada e de fácil manutenção, aplicando conceitos inspirados em Clean Code e separação de responsabilidades.
+
+Os módulos da aplicação foram divididos de forma a manter serviços menores, mais reutilizáveis e com responsabilidades únicas, facilitando a legibilidade e evolução futura do sistema.
+
+---
+
+#### Foco Maior no Backend
+
+Inicialmente, interpretei o desafio como sendo focado apenas em uma das frentes da aplicação. Por gostar muito mais da área de backend, acabei escolhendo dedicar a maior parte do meu tempo e esforço nessa parte do sistema.
+
+Por esse motivo, concentrei bastante atenção na estrutura da API, autenticação, organização da arquitetura e modelagem das entidades.
+
+Posteriormente, ao perceber que o projeto exigia tanto backend quanto frontend, precisei acelerar a construção da interface web, o que acabou tornando o desenvolvimento do frontend mais corrido em comparação ao restante da aplicação.## Observações 
 Comente decisões tomadas, dificuldades ou melhorias futuras. 
